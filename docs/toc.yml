@@ -17,27 +17,17 @@
     - name: Use Angular
       href: quickstarts/excel-quickstart-angular.md
     - name: Use jQuery
-      href: quickstarts/excel-quickstart-jquery.md
+      href: quickstarts/excel-quickstart-jquery-vs.md
   - name: Create Word add-in
-    href: quickstarts/word-quickstart.md
+    href: quickstarts/word-quickstart-vs.md
   - name: Create OneNote add-in
     href: quickstarts/onenote-quickstart.md
   - name: Create Outlook add-in
     href: https://docs.microsoft.com/en-us/outlook/add-ins/quick-start
   - name: Create PowerPoint add-in
-    href: quickstarts/powerpoint-quickstart.md
+    href: quickstarts/powerpoint-quickstart-vs.md
   - name: Create Project add-in
     href: quickstarts/project-quickstart.md
-
-- name: Tutorials
-  items:
-  - name: Create and debug an Office Add-in using Visual Studio
-    href: tutorials/create-and-debug-office-add-ins-in-visual-studio.md
-    items:
-    - name: Get JavaScript IntelliSense in Visual Studio
-      href: tutorials/get-javascript-intellisense-in-visual-studio.md
-  - name: Create and debug an Office Add-in using any editor
-    href: tutorials/create-an-office-add-in-using-any-editor.md
 
 - name: Concepts
   items:
@@ -172,7 +162,9 @@
       href: develop/add-ins-with-angular2.md
     - name: Convert JavaScript to TypeScript
       href: develop/convert-javascript-to-typescript.md
-
+    - name: Get JavaScript IntelliSense in Visual Studio
+      href: develop/get-javascript-intellisense-in-visual-studio.md
+      
   - name: Excel add-ins
     href: excel/excel-add-ins-overview.md
     items:
