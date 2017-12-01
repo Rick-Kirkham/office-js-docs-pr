@@ -77,6 +77,3 @@ function myFunc() {
 ```
 ![Intellisense for complex type](../images/intellisense-vs17-complex-type.png)
 
-## Additional resources
-
-- [Create and debug add-ins in Visual Studio](create-and-debug-office-add-ins-in-visual-studio.md)
