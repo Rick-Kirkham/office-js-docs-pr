@@ -1,6 +1,6 @@
-#Filter and Sort a Table
+# Filter and Sort a Table
 
-This is the second step of a tutorial that begins with [Excel Tutorial Create Table](excel-tutorial-create-table.md). You need to go through all the preceding steps to get the project in the state that this step assumes. 
+This is the second step of a tutorial that begins with [Excel Tutorial Create Table](excel-tutorial-create-table.md). You need to complete the preceding steps to get the project in the state that this step assumes. 
 
 This tutorial shows you how to programmatically filter and sort a table.
 
@@ -24,7 +24,7 @@ This tutorial shows you how to programmatically filter and sort a table.
     $('#filter-table').click(filterTable);
     ```
 
-6. Just below the `createTable` function add the following function.
+6. Just below the `createTable` function add the following function:
 
     ```js
     function filterTable() {
@@ -57,8 +57,8 @@ This tutorial shows you how to programmatically filter and sort a table.
 
 ## Sort the table
 
-2. Open the file index.html.
-3. Just below the `div` that contains the `filter-table` button, add the following markup:
+1. Open the file index.html.
+2. Below the `div` that contains the `filter-table` button, add the following markup:
 
     ```html
     <div class="padding">            
@@ -66,15 +66,15 @@ This tutorial shows you how to programmatically filter and sort a table.
     </div>
     ```
 
-4. Open the app.js file.
+3. Open the app.js file.
 
-5. Just below the line that assigns a click handler to the `filter-table` button, add the following code:
+4. Below the line that assigns a click handler to the `filter-table` button, add the following code:
 
     ```js
     $('#sort-table').click(sortTable);
     ```
 
-6. Just below the `filterTable` function add the following function.
+5. Below the `filterTable` function add the following function.
 
     ```js
     function sortTable() {
@@ -114,16 +114,14 @@ This tutorial shows you how to programmatically filter and sort a table.
 ## Test the add-in
 
 1. Open a Git bash window, or Node.JS-enabled system prompt, and navigate to the **Start** folder of the project.
-3. Run the command `npm run build` to transpile your ES6 source code to an earlier version of JavaScript that is supported by Internet Explorer (which is used under-the-hood by Excel to run Excel add-ins).
-4. Run the command `npm start` to start a web server running on localhost.
-5. Sideload the add-in using one of the methods described in [Excel add-in quickstart that uses jQuery](excel-add-ins-get-started-jquery.md).
-6. Click **Show Taskpane** on the **Home** menu.
-7. Click the **Create Table** button in the taskpane. 
-8. Click the **Filter Table** and **Sort Table** buttons, in either order.
-
+2. Run the command `npm run build` to transpile your ES6 source code to an earlier version of JavaScript that is supported by Internet Explorer (which is used under-the-hood by Excel to run Excel add-ins).
+3. Run the command `npm start` to start a web server running on localhost.
+4. Sideload the add-in using one of the methods described in [Excel add-in quickstart that uses jQuery](excel-add-ins-get-started-jquery.md).
+5. On the **Home** menu, select **Show Taskpane**.
+6. In the taskpane, choose **Create Table**. 
+7. Choose the **Filter Table** and **Sort Table** buttons, in either order.
 
     ![Excel tutorial - Filter and Sort Table](../../images/excel-tutorial-filter-and-sort-table.png)
-
 
 
 ## Next steps

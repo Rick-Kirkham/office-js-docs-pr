@@ -2,14 +2,14 @@
 
 This is the first step in a series of tutorials. Each one adds to the same project. 
 
->**Note**: If you haven't already, please go through the [Excel add-in quickstart that uses jQuery](excel-add-ins-get-started-jquery.md). In particular, be sure that you know how to sideload an Excel add-in for testing.
+>**Note**: If you haven't already, please read [Excel add-in quickstart that uses jQuery](excel-add-ins-get-started-jquery.md). In particular, be sure that you know how to sideload an Excel add-in for testing.
 
-This first tutorial shows you how to programmatically add a table to a worksheet, populate the table with data, and then format it. It also shows you how to test that the user's version of Excel supports the Excel.js version that your add-in uses.
+This first tutorial shows you how to programmatically add a table to a worksheet, populate the table with data, and then format it. It also shows you how to test that your add-in supports the user's current version of Excel.
 
 
 ## Prerequisites
 
-To use this tutorial, you will need to have the following installed. 
+To use this tutorial, you need to have the following installed. 
 
 - Excel 2016, version 1711 (Build 8730.1000 Click-to-Run) or later. You might need to be an Office Insider to get this version. For more information, see [Be an Office Insider](https://products.office.com/en-us/office-insider?tab=tab-1).
 - [Node and npm](https://nodejs.org/en/) 
@@ -31,8 +31,8 @@ To use this tutorial, you will need to have the following installed.
     <button class="ms-Button" id="create-table">Create Table</button>
     ```
 
-1. Open the app.js file.
-2. Replace the `TODO1` with the following code. This code determines whether the user's version of Excel supports a version of Excel.js that includes all the APIs that this series of tutorials will use. In a production add-in, use the body of the conditional block to hide or disable the UI that would call unsupported APIs. This will enable the user to still make use of the parts of the add-in that are supported by her or his version of Excel.
+4. Open the app.js file.
+5. Replace the `TODO1` with the following code. This code determines whether the user's version of Excel supports a version of Excel.js that includes all the APIs that this series of tutorials will use. In a production add-in, use the body of the conditional block to hide or disable the UI that would call unsupported APIs. This will enable the user to still make use of the parts of the add-in that are supported by their version of Excel.
 
     ```js
     if (!Office.context.requirements.isSetSupported('ExcelApi', 1.7)) {
@@ -40,14 +40,14 @@ To use this tutorial, you will need to have the following installed.
     } 
     ```
 
-7. Replace the `TODO2` with the following code:
+6. Replace the `TODO2` with the following code:
 
     ```js
     $('#create-table').click(createTable);
     ```
 
-8. Replace the `TODO3` with the following. Note the following about this code:
-   - Your Excel.js business logic will be added to the function that is passed to `Excel.run`. This logic does not execute immediately. Instead it is added to a queue of pending commands.
+7. Replace the `TODO3` with the following code. Note the following:
+   - Your Excel.js business logic will be added to the function that is passed to `Excel.run`. This logic does not execute immediately. Instead, it is added to a queue of pending commands.
    - The `context.sync` method sends all queued commands to Excel for execution.
    - The `Excel.run` is followed by a `catch` block. This is a best practice that you should always follow. 
 
@@ -72,7 +72,7 @@ To use this tutorial, you will need to have the following installed.
     }
     ``` 
 
-1. Replace `TODO4` with the following. Note about this code:
+8. Replace `TODO4` with the following code. Note:
    - The code creates a table by using `add` method of a worksheet's table collection, which always exists even if it is empty. This is the standard way that Excel.js objects are created. There are no class constructor APIs, and you never use a `new` operator to create an Excel object. Instead, you add to a parent collection object. 
    - The first parameter of the `add` method is the range of only the top row of the table, not the entire range the table will ultimately use. This is because when the add-in populates the data rows (in the next step), it will add new rows to the table instead of writing values to the cells of existing rows. This is a more common pattern because the number of rows that a table will have is often not known when the table is created. 
    - Table names must be unique across the entire workbook, not just the worksheet.
@@ -83,7 +83,7 @@ To use this tutorial, you will need to have the following installed.
     expensesTable.name = "ExpensesTable";
     ``` 
 
-1. Replace `TODO5` with the following. Note about this code:
+9. Replace `TODO5` with the following code. Note:
    - The cell values of a range are set with an array of arrays.
    - New rows are created in a table by calling the `add` method of the table's row collection. You can add multiple rows in a single call of `add` by including multiple cell value arrays in the parent array that is passed as the second parameter.
 
@@ -102,7 +102,7 @@ To use this tutorial, you will need to have the following installed.
     ]);
     ``` 
 
-1. Replace `TODO6` with the following. Note:
+10. Replace `TODO6` with the following code. Note:
    - The code gets a reference to the **Amount** column by passing its zero-based index to the `getItemAt` method of the table's column collection. 
 
      >**Note**: Excel.js collection objects, such as `TableCollection`, `WorksheetCollection`, and `TableColumnCollection` have an `items` property that is an array of the child object types, such as `Table` or `Worksheet` or `TableColumn`; but a `*Collection` object is not itself an array.
@@ -122,8 +122,8 @@ To use this tutorial, you will need to have the following installed.
 3. Run the command `npm run build` to transpile your ES6 source code to an earlier version of JavaScript that is supported by Internet Explorer (which is used under-the-hood by Excel to run Excel add-ins).
 4. Run the command `npm start` to start a web server running on localhost.   
 5. Sideload the add-in using one of the methods specified in [Excel add-in quickstart that uses jQuery](excel-add-ins-get-started-jquery.md).
-6. Click **Show Taskpane** on the **Home** menu.
-7. Click the **Create Table** button in the taskpane. 
+6. On the **Home** menu, choose **Show Taskpane**.
+7. In the taskpane, choose **Create Table**. 
 
 
     ![Excel tutorial - Create Table](../../images/excel-tutorial-create-table.png)

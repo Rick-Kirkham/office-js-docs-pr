@@ -1,6 +1,6 @@
-#Protect a worksheet from changes
+# Protect a worksheet from changes
 
-This is the fifth step of a tutorial that begins with [Excel Tutorial Create Table](excel-tutorial-create-table.md). You need to go through all the preceding steps to get the project in the state that this step assumes. 
+This is the fifth step of a tutorial that begins with [Excel Tutorial Create Table](excel-tutorial-create-table.md). You need to completel the preceding steps to get the project in the state that this step assumes. 
 
 ## Configure the manifest to add a second ribbon button
 
@@ -31,13 +31,13 @@ This is the fifth step of a tutorial that begins with [Excel Tutorial Create Tab
     <Control xsi:type="Button" id="ToggleProtection">
     ```
 
-5. The next three `TODO`s set "resid"s, which is short for resource ID. A resource is a string, and you'll create these three strings in a later step. For now, you just need to give IDs to the resources. The button label should read "Toggle Protection", but the *ID* of this string should be "ProtectionButtonLabel", so the completed `Label` element should look like this:
+4. The next three `TODO`s set "resid"s, which is short for resource ID. A resource is a string, and you'll create these three strings in a later step. For now, you need to give IDs to the resources. The button label should read "Toggle Protection", but the *ID* of this string should be "ProtectionButtonLabel", so the completed `Label` element should look like the following code:
 
     ```xml
     <Label resid="ProtectionButtonLabel" />
     ```
 
-6. The `SuperTip` element defines the tool tip for the button. The tool tip title should be the same as the button label, so we use the very same resource ID: "ProtectionButtonLabel". The tool tip description will be "Click to turn protection of the worksheet on and off". But the `ID` should be "ProtectionButtonToolTip". So, when you are done, the whole `SuperTip` markup should look like this: 
+5. The `SuperTip` element defines the tool tip for the button. The tool tip title should be the same as the button label, so we use the very same resource ID: "ProtectionButtonLabel". The tool tip description will be "Click to turn protection of the worksheet on and off". But the `ID` should be "ProtectionButtonToolTip". So, when you are done, the whole `SuperTip` markup should look like the following code: 
 
     ```xml
     <Supertip>            
@@ -48,13 +48,13 @@ This is the fifth step of a tutorial that begins with [Excel Tutorial Create Tab
 
    > **Note**: In a production add-in, you would not want to use the same icon for two different buttons; but to simplify this tutorial, we'll do that. So the `Icon` markup in our new `Control` is just a copy of the `Icon` element from the existing `Control`. 
 
-7. The `Action` element inside the original `Control` element that was already present in the manifest, has its type set to `ShowTaskpane`, but our new button isn't going to open a task pane; it's going to run a custom function that you create in a later step. So replace `TODO5` with `ExecuteFunction` which is the action type for buttons that trigger custom functions. The start `Action` tag should look like the following:
+6. The `Action` element inside the original `Control` element that was already present in the manifest, has its type set to `ShowTaskpane`, but our new button isn't going to open a task pane; it's going to run a custom function that you create in a later step. So replace `TODO5` with `ExecuteFunction` which is the action type for buttons that trigger custom functions. The start `Action` tag should look like the following code:
  
     ```xml
     <Action xsi:type="ExecuteFunction">
     ```
 
-8. The original `Action` element has child elements that specify a task pane ID and a URL of the page that should be opened in the task pane. But an `Action` element of the `ExecuteFunction` type has a single child element that names the function that the control executes. You'll create that function in a later step, and it will be called `toggleProtection`. So, replace `TODO6` with the following markup:
+7. The original `Action` element has child elements that specify a task pane ID and a URL of the page that should be opened in the task pane. But an `Action` element of the `ExecuteFunction` type has a single child element that names the function that the control executes. You'll create that function in a later step, and it will be called `toggleProtection`. So, replace `TODO6` with the following markup:
  
     ```xml
     <FunctionName>toggleProtection</FunctionName>
@@ -80,27 +80,27 @@ This is the fifth step of a tutorial that begins with [Excel Tutorial Create Tab
     </Control>
     ```
 
-2. Scroll down to the `Resources` section of the manifest.
+8. Scroll down to the `Resources` section of the manifest.
 
-1. Add the following markup as a child of the `bt:ShortStrings` element.
+9. Add the following markup as a child of the `bt:ShortStrings` element.
 
     ```xml
     <bt:String id="ProtectionButtonLabel" DefaultValue="Toggle Worksheet Protection" />
     ```
 
-1. Add the following markup as a child of the `bt:LongStrings` element.
+10. Add the following markup as a child of the `bt:LongStrings` element.
 
     ```xml
     <bt:String id="ProtectionButtonToolTip" DefaultValue="Click to protect or unprotect the current worksheet." />
     ```
 
-1. Be sure to save the file.
+11. Be sure to save the file.
 
 ## Create the function that protects the sheet
 
 1. Open the file \function-file\function-file.js.
 
-1. The file already has an Immediately Invoked Function Expression (IFFE). No custom initialization logic is needed, so leave the function that is assigned to `Office.initialize` with an empty body. (But do not delete it. The `Office.initialize` property cannot be null or undefined.) *Outside of the IIFE*, add the following code. About this code, note that we specify an `args` parameter to the method and the very last line of the method calls `args.completed`. This is a requirement for all add-in commands of type **ExecuteFunction**. It signals the Office host application that the function has finished and the UI can become responsive again.
+2. The file already has an Immediately Invoked Function Expression (IFFE). No custom initialization logic is needed, so leave the function that is assigned to `Office.initialize` with an empty body. (But do not delete it. The `Office.initialize` property cannot be null or undefined.) *Outside of the IIFE*, add the following code. Note that we specify an `args` parameter to the method and the very last line of the method calls `args.completed`. This is a requirement for all add-in commands of type **ExecuteFunction**. It signals the Office host application that the function has finished and the UI can become responsive again.
 
     ```javascript
     function toggleProtection(args) {
@@ -120,7 +120,7 @@ This is the fifth step of a tutorial that begins with [Excel Tutorial Create Tab
     }
     ```
 
-4. Replace TODO1 with the following code. This code uses the worksheet object's protection property in a standard toggle pattern. The `TODO2` will be explained in the next section.
+3. Replace TODO1 with the following code. This code uses the worksheet object's protection property in a standard toggle pattern. The `TODO2` will be explained in the next section.
 
     ```javascript
     const sheet = context.workbook.worksheets.getActiveWorksheet();
@@ -145,7 +145,7 @@ In all the earlier functions in this series of tutorials, you queued commands to
 
 These steps must be completed whenever your code needs to *read* information from the Office document.
 
-1. In the `toggleProtection` method, replace `TODO2` with the following code. Note about this code:
+1. In the `toggleProtection` method, replace `TODO2` with the following code. Note:
    - Every Excel object has a `load` method. You specify the properties of the object that you want to read in the parameter as a string of comma-delimited names. In this case, the property you need to read is a subproperty of the `protection` property. You reference the subproperty almost exactly as you would anywhere else in your code, with the exception that you use a forward slash ('/') character instead of a "." character.
    - To ensure that the toggle logic, which reads `sheet.protection.protected`, does not run until after the `sync` is complete and the `sheet.protection.protected` has been assigned the correct value that is fetched from the document, it will be moved (in the next step) into a `then` function that won't run until the `sync` has completed. 
 
@@ -161,9 +161,9 @@ These steps must be completed whenever your code needs to *read* information fro
         //        does not run until the toggle logic has been queued.
     ``` 
 
-2. You can't have two `return` statements in the same unbranching code path, so delete the final line `return context.sync();` at the end of the `Excel.run`. (You will add a new final `context.sync`, in a later step.)
+2. You can't have two `return` statements in the same unbranching code path, so delete the final line `return context.sync();` at the end of the `Excel.run`. You will add a new final `context.sync`, in a later step.
 3. Cut the `if ... else` structure in the `toggleProtection` method and paste it in place of `TODO3`.
-4. Replace `TODO4` with the following code. Note about this code:
+4. Replace `TODO4` with the following code. Note:
    - Passing the `sync` method to a `then` function ensures that it does not run until either `sheet.protection.unprotect()` or `sheet.protection.protect()` has been queued.
    - The `then` method invokes whatever function is passed to it, and you don't want `sync` to be invoked twice, so leave off the "()" from the end of `context.sync`.
 
@@ -211,13 +211,13 @@ These steps must be completed whenever your code needs to *read* information fro
 
 ## Test the add-in
 
-1. Open a Git bash window, or Node.JS-enabled system prompt, and navigate to the **Start** folder of the project.
+1. Open a Git Bash window, or Node.JS-enabled system prompt, and navigate to the **Start** folder of the project.
 3. Run the command `npm run build` to transpile your ES6 source code to an earlier version of JavaScript that is supported by Internet Explorer (which is used under-the-hood by Excel to run Excel add-ins).
 4. Run the command `npm start` to start a web server running on localhost.
 5. Sideload the add-in using one of the methods described in [Excel add-in quickstart that uses jQuery](excel-add-ins-get-started-jquery.md).
-6. Click **Toggle Worksheet Protection** on the **Home** ribbon. Note that most of the controls on the ribbon are disabled (and visually grayed-out) as seen in screenshot below. 
-7. Click on a cell as you would if you wanted to change its content. You get an error telling you that the worksheet is protected.
-8. Click the button again, and the controls are reenabled, and you can change cell values again.
+6. On the **Home** ribbon, choose **Toggle Worksheet Protection**. Note that most of the controls on the ribbon are disabled (and visually grayed-out) as seen in screenshot below. 
+7. Choose a cell as you would if you wanted to change its content. You get an error telling you that the worksheet is protected.
+8. Choose **Toggle Worksheet Protection** again, and the controls are reenabled, and you can change cell values again.
 
     ![Excel tutorial - Ribbon with Protection On](../../images/excel-tutorial-ribbon-with-protection-on.png)
 

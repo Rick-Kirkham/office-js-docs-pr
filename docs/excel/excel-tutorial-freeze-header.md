@@ -1,6 +1,6 @@
-#Freeze a table header in place
+# Freeze a table header in place
 
-This is the fourth step of a tutorial that begins with [Excel Tutorial Create Table](excel-tutorial-create-table.md). You need to go through all the preceding steps to get the project in the state that this step assumes. 
+This is the fourth step of a tutorial that begins with [Excel Tutorial Create Table](excel-tutorial-create-table.md). You need to complete the preceding steps to get the project in the state that this step assumes. 
 
 When a table is long enough that a user must scroll to see some rows, the header row can scroll out of sight. In this tutorial, you learn how to freeze a row so that it remains visible even if the user scrolls a great deal. 
 
@@ -8,7 +8,7 @@ When a table is long enough that a user must scroll to see some rows, the header
 
 1. Open the project in your code editor. 
 2. Open the file index.html.
-3. Just below the `div` that contains the `create-chart` button, add the following markup:
+3. Below the `div` that contains the `create-chart` button, add the following markup:
 
     ```html
     <div class="padding">            
@@ -18,13 +18,13 @@ When a table is long enough that a user must scroll to see some rows, the header
 
 4. Open the app.js file.
 
-5. Just below the line that assigns a click handler to the `create-chart` button, add the following code:
+5. Below the line that assigns a click handler to the `create-chart` button, add the following code:
 
     ```js
     $('#freeze-header').click(freezeHeader);
     ```
 
-6. Just below the `createChart` function add the following function.
+6. Below the `createChart` function add the following function:
 
     ```js
     function freezeHeader() {
@@ -43,7 +43,7 @@ When a table is long enough that a user must scroll to see some rows, the header
     }
     ``` 
 
-7. Replace `TODO1` with the following code. Note 
+7. Replace `TODO1` with the following code. Note:
    - The `Worksheet.freezePanes` collection is a set of panes in the worksheet that are pinned, or frozen, in place when the worksheet is scrolled.
    - The `freezeRows` method takes as a parameter the number of rows, from the top that are to be pinned in place. We pass `1`
 
@@ -56,13 +56,13 @@ When a table is long enough that a user must scroll to see some rows, the header
 ## Test the add-in
 
 1. Open a Git bash window, or Node.JS-enabled system prompt, and navigate to the **Start** folder of the project.
-3. Run the command `npm run build` to transpile your ES6 source code to an earlier version of JavaScript that is supported by Internet Explorer (which is used under-the-hood by Excel to run Excel add-ins).
-4. Run the command `npm start` to start a web server running on localhost.
-5. Sideload the add-in using one of the methods described in [Excel add-in quickstart that uses jQuery](excel-add-ins-get-started-jquery.md).
-6. Click **Show Taskpane** on the **Home** menu.
-7. Click the **Create Table** button in the taskpane. 
-8. Click the **Freeze Header** button.
-9. Scroll the worksheet enough to to see that the table header remains visible at the top even when the higher rows scroll out of sight.
+2. Run the command `npm run build` to transpile your ES6 source code to an earlier version of JavaScript that is supported by Internet Explorer (which is used under-the-hood by Excel to run Excel add-ins).
+3. Run the command `npm start` to start a web server running on localhost.
+4. Sideload the add-in using one of the methods described in [Excel add-in quickstart that uses jQuery](excel-add-ins-get-started-jquery.md).
+5. On the **Home** menu, choose **Show Taskpane**.
+6. In the taskpane, choose **Create Table**. 
+7. Choose the **Freeze Header** button.
+8. Scroll the worksheet enough to to see that the table header remains visible at the top even when the higher rows scroll out of sight.
 
 
     ![Excel tutorial - Freeze Header](../../images/excel-tutorial-freeze-header.png)
